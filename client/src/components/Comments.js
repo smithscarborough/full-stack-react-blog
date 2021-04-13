@@ -7,8 +7,9 @@ export default function Comments(props) {
   const [text, setText] = useState('');
   const [comments, setComments] = useState([]);
   const user = useSelector((state) => state.user);
-  const getComments = () => {
-    fetch(`/api/v1/posts/${props.postId}/comments`)
+
+  const getComments = (id) => {
+    fetch(`/api/v1/posts/${id}/comments`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -18,8 +19,9 @@ export default function Comments(props) {
         }
       });
   };
+
   useEffect(() => {
-    getComments();
+    getComments(props.postId);
   }, [props.postId]);
   const handleSubmit = (e) => {
     e.preventDefault();

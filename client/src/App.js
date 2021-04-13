@@ -22,6 +22,7 @@ function App() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  // note: normally, we'd want to include this piece of state in redux, along with the rest of our app's state - just including it here for the sake of time
   const [userStatus, setUserStatus] = useState('LOADING');
   const logout = () => {
     fetch('/api/v1/users/logout')
