@@ -38,6 +38,9 @@ export default function Comments(props) {
           alert(data.error);
         } else {
           alert('Comment Submitted');
+        //   clear the text field and hide form when it is submitted
+          setText('');
+          setShowForm(false);
           getComments();
         }
       });
@@ -47,7 +50,7 @@ export default function Comments(props) {
       <div>
         {comments.map((comment) => {
           return (
-            <div>
+            <div key={comment.id}>
               <p>{comment.text}</p>
               <h6>{comment.User.username}</h6>
             </div>
